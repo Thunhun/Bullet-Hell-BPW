@@ -153,8 +153,8 @@ Camera:
   m_GameObject: {fileID: 504618590}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.8962264, g: 0.7841638, b: 0.6552599, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -230,23 +230,23 @@ MonoBehaviour:
     _max: 0
   Color: {r: 0.5424528, g: 0.9642299, b: 1, a: 1}
   FireRate:
-    _min: 2
-    _max: 2
+    _min: 1
+    _max: 1
   FrameRate: 0
   Arc:
     Count:
-      _min: 5
-      _max: 5
+      _min: 8
+      _max: 8
     ArcLength:
-      _min: 1.3962634
-      _max: 1.3962634
+      _min: 3.1415927
+      _max: 3.1415927
     Radius:
       _min: 0
       _max: 0
   Line:
     Count:
-      _min: 5
-      _max: 5
+      _min: 3
+      _max: 3
     DeltaSpeed:
       _min: 5
       _max: 5

@@ -659,7 +659,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: b6954a27-5334-4492-9395-5e5ad95751f2
   projectName: bullet hell
   organizationId: thunhun
