@@ -12,17 +12,53 @@ public class Enemy : MonoBehaviour {
     public float bulletSpeed = 0.7f;
     public int bulletDamage = 1;
 
+    public enum EnemyState { Moving, Shooting, Idle }
+    public EnemyState state;
+    private bool isShooting = false;
+    private Vector3 shootPos;
+    public float moveSpeed = 0.3f;
+
     void Start () {
         PoolManager.instance.CreatePool(bullet, 50);
-        StartCoroutine(shooting());
+
+        shootPos = transform.position;
+        shootPos.y -= 5;
+        state = EnemyState.Moving;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        ExecuteState();
+    }
+
+    private void ExecuteState()
+    {
+        switch (state)
+        {
+            case EnemyState.Shooting:
+                if (!isShooting)
+                {
+                    isShooting = true;
+                    StartCoroutine(shooting());
+                }
+                break;
+            case EnemyState.Moving:
+                moving();
+                break;
+        }
+    }
+    void moving()
+    {
+        if (Vector2.Distance(shootPos, transform.position) < 0.5f)
+        {
+            state = EnemyState.Shooting;
+
+        }
+        transform.Translate(new Vector2(0, -moveSpeed));
 
     }
-	
-
-	void Update () {
-		
-	}
-
     IEnumerator shooting()
     {
         shootCircle();
@@ -31,13 +67,12 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(shooting());
 
     }
-
-        void shootCircle()
+    void shootCircle()
     {
         for (int i = 0; i < apc; i++)
         {
             GameObject cBullet = PoolManager.instance.ReuseObject(bullet, schootPos.position, schootPos.rotation);
-            cBullet.GetComponent<Projectile>().Spawn(bulletSpeed, bulletDamage);
+            cBullet.GetComponent<Projectile>().Spawn(bulletSpeed, bulletDamage, true);
             transform.Rotate(new Vector3(0, 0, 360 / apc));
         }
         transform.rotation = new Quaternion();

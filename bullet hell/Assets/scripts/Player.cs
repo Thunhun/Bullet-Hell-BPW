@@ -8,19 +8,27 @@ public class Player : MonoBehaviour {
     private float ySpeed = 0;
     public float maxSpeed = 10;
     public GameObject bullet;
+    public GameObject Altbullet;
     public Transform schootPos;
+    public Transform AltschootPos;
     private bool isShooting = false;
+    private bool isShootingCircle = false;
     public float bps = 5;
-
+    public float bpsc = 5;
+    public int apc = 7;
+    private Vector3 AltshootPos;
     public float bulletSpeed = 0.7f;
+    public float AltbulletSpeed = 0.2f;
     public int bulletDamage = 1;
+    public int AltbulletDamage = 2;
 
 
     void Start()
     {
         PoolManager.instance.CreatePool(bullet, 50);
-
-
+        PoolManager.instance.CreatePool(Altbullet, 50);
+        AltshootPos = transform.position;
+        AltshootPos.y -= 5;
     }
 
     
@@ -29,16 +37,32 @@ public class Player : MonoBehaviour {
         ySpeed = Input.GetAxis("Vertical") * maxSpeed;
         transform.Translate(new Vector2(xSpeed, ySpeed));
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             isShooting = true;
             StartCoroutine(shooting());
+            isShootingCircle = true;
+            StartCoroutine(shootingCircle());
+
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Z))
         {
             isShooting = false;
-            StopAllCoroutines();
+            StopCoroutine(shooting());
+            isShootingCircle = false;
+            StopCoroutine(shootingCircle());
+        }
+
+      
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            maxSpeed = maxSpeed / 2;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            maxSpeed = maxSpeed * 2;
         }
 
 
@@ -71,6 +95,27 @@ public class Player : MonoBehaviour {
         GameObject cBullet = PoolManager.instance.ReuseObject(bullet, schootPos.position, schootPos.rotation);
         cBullet.GetComponent<Projectile>().Spawn(bulletSpeed, bulletDamage);
 
+    }
+
+    IEnumerator shootingCircle()
+    {
+  
+        yield return new WaitForSeconds(4 / bpsc);
+        shootCircle();
+        if (isShootingCircle)
+        {
+            StartCoroutine(shootingCircle());
+        }
+    }
+    void shootCircle()
+    {
+        for (int i = 0; i < apc; i++)
+        {
+            GameObject cBullet = PoolManager.instance.ReuseObject(Altbullet, AltschootPos.position, AltschootPos.rotation);
+            cBullet.GetComponent<Projectile>().Spawn(AltbulletSpeed, AltbulletDamage);
+            transform.Rotate(new Vector3(0, 0, 360 / apc));
+        }
+        transform.rotation = new Quaternion();
     }
 
 }

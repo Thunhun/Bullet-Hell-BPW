@@ -14,7 +14,7 @@ public class Projectile : PoolObject
     [SerializeField]
     private float destroyTime = 3f;
     public int damage = 1;
-
+    public bool fromEnemy = false;
     public void FixedUpdate()
     {
         //goes forward with speed!
@@ -31,10 +31,11 @@ public class Projectile : PoolObject
     {
         base.Destroy();
     }
-    public void Spawn(float _speed = 0.8f, int _damage = 1)
+    public void Spawn(float _speed = 0.8f, int _damage = 1, bool _fromEnemy = false)
     {
         damage = _damage;
         speed = _speed;
+        fromEnemy = _fromEnemy;
         StartCoroutine(Destroying());
 
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -45,17 +46,21 @@ public class Projectile : PoolObject
         Destroy();
     }
     //when it hits something.
-    public void OnCollisionEnter2D(Collision2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.gameObject.GetComponent<Projectile>())
         {
             if (col.gameObject.GetComponent<Health>())
             {
-                Debug.Log("PUSH BAACCCKKK");
-                col.gameObject.GetComponent<Health>().Damage(damage);
+                //.Log("PUSH BAACCCKKK");
+                if ((col.gameObject.GetComponent<Player>() && fromEnemy) || (col.gameObject.GetComponent<Enemy>() && !fromEnemy))
+                {
+                    col.gameObject.GetComponent<Health>().Damage(damage);
+                    StopAllCoroutines();
+                    Destroy();
+                }
             }
-            StopAllCoroutines();
-            Destroy();
+
         }
         
     }

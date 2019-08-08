@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114864027480161448}
   - component: {fileID: 50098540436899814}
   - component: {fileID: 58431907340141834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1130151153236042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.824668, y: 3.4085236, z: 45.687183}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,7 +90,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.8
-  destroyTime: 3
+  destroyTime: 6
+  damage: 1
+  fromEnemy: 0
 --- !u!212 &212795402427415216
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -126,8 +128,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.4198113, g: 1, b: 0.9564223, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 26cc5468b13c048b2a5af7e74ffb0015, type: 3}
+  m_Color: {r: 0.7075472, g: 0.33269423, b: 0.1702118, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
