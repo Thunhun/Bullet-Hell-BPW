@@ -8,14 +8,18 @@ public class Health : MonoBehaviour {
     private int Hp;
     public int maxHp = 5;
     public Healthbar healthbar;
+    public GameObject healthBar;
     public static bool GameIsPaused = false;
+    public static bool GameIsOver = false;
     public GameObject loseMenuUI;
+
 
 
     void Start () {
         Hp = maxHp;
-
-	}
+        GameIsOver = false;
+        GameIsPaused = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,6 +44,7 @@ public class Health : MonoBehaviour {
     {
         if (GetComponent<Enemy>() != null)
         {
+            FindObjectOfType<AudioManager>().Play("Killed Enemy");
             if (enemySpawner.instance.spawnIng == false)
             {
                 if (Transform.FindObjectsOfType<Enemy>().Length <= 1)
@@ -54,12 +59,17 @@ public class Health : MonoBehaviour {
         }
         if (GetComponent<Player>() != null)
         {
-
+            healthBar.SetActive(false);
             loseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+            GameIsOver = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            FindObjectOfType<AudioManager>().Play("Killed Player");
+
+            FindObjectOfType<AudioManager>().Play("GameOver");
+
 
         }
         Destroy(gameObject);

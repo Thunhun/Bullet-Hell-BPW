@@ -37,13 +37,16 @@ public class Player : MonoBehaviour {
 
 
     void Update () {
-        xSpeed = Input.GetAxis("Horizontal") * maxSpeed;
-        ySpeed = Input.GetAxis("Vertical") * maxSpeed;
-        transform.Translate(new Vector2(xSpeed, ySpeed));
+
+        if (Pausemenu.ButtonEnabled == true)
+        {
+            xSpeed = Input.GetAxis("Horizontal") * maxSpeed;
+            ySpeed = Input.GetAxis("Vertical") * maxSpeed;
+            transform.Translate(new Vector2(xSpeed, ySpeed));
+        }
 
 
-
-        if (Input.GetKeyDown(KeyCode.Z))
+        if ((Input.GetKeyDown(KeyCode.Z)) && (Pausemenu.ButtonEnabled == true))
         {
             isShooting = true;
             StartCoroutine(shooting());
@@ -59,13 +62,13 @@ public class Player : MonoBehaviour {
         }
 
       
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if ((Input.GetKeyDown(KeyCode.LeftShift)) && (Pausemenu.ButtonEnabled == true))
         {
             maxSpeed = maxSpeed / 2;
             HitBox.SetActive(true);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if ((Input.GetKeyUp(KeyCode.LeftShift)) && (Pausemenu.ButtonEnabled == true))
         {
             maxSpeed = maxSpeed * 2;
             HitBox.SetActive(false);

@@ -15,6 +15,7 @@ public class Projectile : PoolObject
     private float destroyTime = 3f;
     public int damage = 1;
     public bool fromEnemy = false;
+   
     public void FixedUpdate()
     {
         //goes forward with speed!
@@ -53,7 +54,15 @@ public class Projectile : PoolObject
             if (col.gameObject.GetComponent<Health>())
             {
                 //.Log("PUSH BAACCCKKK");
-                if ((col.gameObject.GetComponent<Player>() && fromEnemy) || (col.gameObject.GetComponent<Enemy>() && !fromEnemy))
+                if ((col.gameObject.GetComponent<Player>() && fromEnemy))
+                {
+                    col.gameObject.GetComponent<Health>().Damage(damage);
+                    StopAllCoroutines();
+                    FindObjectOfType<AudioManager>().Play("Hit");
+                    Destroy();
+
+                }
+                if ((col.gameObject.GetComponent<Enemy>() && !fromEnemy))
                 {
                     col.gameObject.GetComponent<Health>().Damage(damage);
                     StopAllCoroutines();

@@ -31,7 +31,10 @@ public class Enemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        ExecuteState();
+        if (Pausemenu.ButtonEnabled == true)
+        {
+            ExecuteState();
+        }
     }
 
     private void ExecuteState()

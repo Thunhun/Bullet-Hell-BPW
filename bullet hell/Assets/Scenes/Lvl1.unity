@@ -162,6 +162,11 @@ Prefab:
       propertyPath: loseMenuUI
       value: 
       objectReference: {fileID: 458500403}
+    - target: {fileID: 114847511566927594, guid: 1137dc9daca16447d9ac175ba3225eae,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1872390684}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1137dc9daca16447d9ac175ba3225eae, type: 2}
   m_IsPrefabParent: 0
@@ -238,7 +243,7 @@ Transform:
   m_LocalScale: {x: 7.6459537, y: 3.3063614, z: 3.3063614}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &147148837
 Animator:
@@ -668,7 +673,7 @@ GameObject:
   - component: {fileID: 902496813}
   - component: {fileID: 902496812}
   m_Layer: 0
-  m_Name: CLOUDY-SKY
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -730,7 +735,7 @@ Transform:
   m_LocalScale: {x: 4.587925, y: 4.587924, z: 4.587924}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111138347
 GameObject:
@@ -823,7 +828,7 @@ Transform:
   m_LocalScale: {x: 8.93269, y: 4.610428, z: 4.610428}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1398995983 stripped
 RectTransform:
@@ -1151,6 +1156,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df55c8b1156b441d2a7901075c65dd82, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1872390684 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1650974186366906, guid: df55c8b1156b441d2a7901075c65dd82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872390683}
 --- !u!1001 &1906574926
 Prefab:
   m_ObjectHideFlags: 0
@@ -1188,7 +1198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4256497749224162, guid: 556ac67fa186e4e70b64a4862d91ac65, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 556ac67fa186e4e70b64a4862d91ac65, type: 2}
