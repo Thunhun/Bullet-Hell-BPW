@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     public float maxSpeed = 10;
     public GameObject bullet;
     public GameObject Altbullet;
+    public GameObject HitBox;
     public Transform schootPos;
     public Transform AltschootPos;
     private bool isShooting = false;
@@ -29,20 +30,24 @@ public class Player : MonoBehaviour {
         PoolManager.instance.CreatePool(Altbullet, 50);
         AltshootPos = transform.position;
         AltshootPos.y -= 5;
+        isShootingCircle = true;
+        StartCoroutine(shootingCircle());
+
     }
 
-    
+
     void Update () {
         xSpeed = Input.GetAxis("Horizontal") * maxSpeed;
         ySpeed = Input.GetAxis("Vertical") * maxSpeed;
         transform.Translate(new Vector2(xSpeed, ySpeed));
 
+
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             isShooting = true;
             StartCoroutine(shooting());
-            isShootingCircle = true;
-            StartCoroutine(shootingCircle());
+
 
         }
 
@@ -50,19 +55,20 @@ public class Player : MonoBehaviour {
         {
             isShooting = false;
             StopCoroutine(shooting());
-            isShootingCircle = false;
-            StopCoroutine(shootingCircle());
+
         }
 
       
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             maxSpeed = maxSpeed / 2;
+            HitBox.SetActive(true);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             maxSpeed = maxSpeed * 2;
+            HitBox.SetActive(false);
         }
 
 
@@ -94,6 +100,7 @@ public class Player : MonoBehaviour {
     {
         GameObject cBullet = PoolManager.instance.ReuseObject(bullet, schootPos.position, schootPos.rotation);
         cBullet.GetComponent<Projectile>().Spawn(bulletSpeed, bulletDamage);
+        FindObjectOfType<AudioManager>().Play("PlayerShooting");
 
     }
 
@@ -112,10 +119,11 @@ public class Player : MonoBehaviour {
         for (int i = 0; i < apc; i++)
         {
             GameObject cBullet = PoolManager.instance.ReuseObject(Altbullet, AltschootPos.position, AltschootPos.rotation);
-            cBullet.GetComponent<Projectile>().Spawn(AltbulletSpeed, AltbulletDamage);
+            cBullet.GetComponent<LaserProjectile>().Spawn(AltbulletSpeed, AltbulletDamage);
             transform.Rotate(new Vector3(0, 0, 360 / apc));
         }
         transform.rotation = new Quaternion();
+        FindObjectOfType<AudioManager>().Play("PlayerCircle");
     }
 
 }

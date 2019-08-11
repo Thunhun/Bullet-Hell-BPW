@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     private bool isShooting = false;
     private Vector3 shootPos;
     public float moveSpeed = 0.3f;
+    public AudioSource shoot;
 
     void Start () {
         PoolManager.instance.CreatePool(bullet, 50);
@@ -76,6 +77,7 @@ public class Enemy : MonoBehaviour {
             transform.Rotate(new Vector3(0, 0, 360 / apc));
         }
         transform.rotation = new Quaternion();
+        shoot.Play();
     }
 
 }

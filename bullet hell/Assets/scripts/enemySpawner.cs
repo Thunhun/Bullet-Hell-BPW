@@ -49,7 +49,7 @@ public class enemySpawner : MonoBehaviour {
         else
         {
             spawnIng = false;
-            Debug.Log("finished spawning");
+
         }
     }
 
@@ -61,10 +61,10 @@ public class enemySpawner : MonoBehaviour {
         {
             RandomInex = Random.Range(0, wave);
         }
-        Debug.Log(" type: " + type);
+
         Transform spawnPos = transform; 
         spawnPos.position =  new Vector2(Random.Range(leftPos.x, rightPos.x), rightPos.y - 2f);
-        Debug.Log(" spawnPos: " + spawnPos.position);
+ 
         GameObject enemy =  Instantiate(enemies[RandomInex]);
         enemy.transform.position = spawnPos.position;
     }

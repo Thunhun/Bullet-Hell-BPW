@@ -9,12 +9,12 @@ public class Health : MonoBehaviour {
     public int maxHp = 5;
     public Healthbar healthbar;
     public static bool GameIsPaused = false;
-
     public GameObject loseMenuUI;
-    public GameObject winMenuUI;
+
 
     void Start () {
         Hp = maxHp;
+
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,8 @@ public class Health : MonoBehaviour {
         }
     }
 
-    void Death()
+
+    public void Death()
     {
         if (GetComponent<Enemy>() != null)
         {
@@ -43,12 +44,9 @@ public class Health : MonoBehaviour {
             {
                 if (Transform.FindObjectsOfType<Enemy>().Length <= 1)
                 {
-                    Debug.Log("victory");
-                    winMenuUI.SetActive(true);
-                    Time.timeScale = 0f;
-                    GameIsPaused = true;
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.None;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
 
             }
@@ -56,7 +54,7 @@ public class Health : MonoBehaviour {
         }
         if (GetComponent<Player>() != null)
         {
-            Debug.Log("game over");
+
             loseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
@@ -66,6 +64,7 @@ public class Health : MonoBehaviour {
         }
         Destroy(gameObject);
     }
+
 
 
 
