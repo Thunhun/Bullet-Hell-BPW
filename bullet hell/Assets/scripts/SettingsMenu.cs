@@ -12,12 +12,5 @@ public class SettingsMenu : MonoBehaviour
         musicmixer.SetFloat("Volume", volume);
 
     }
-    public void SetSound(float volume)
-    {
-        musicmixer.SetFloat("Sounds", volume);
-    }
-    public void SetMusic(float volume)
-    {
-        musicmixer.SetFloat("music", volume);
-    }
+
 }

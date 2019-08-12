@@ -97,7 +97,8 @@ AudioSource:
   m_GameObject: {fileID: 1276392058998664}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8f9775c1152864fd7aa653b74aaa3955, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 70
   healthbar: {fileID: 0}
+  healthBar: {fileID: 0}
   loseMenuUI: {fileID: 0}
 --- !u!114 &114989157212113358
 MonoBehaviour:
@@ -235,7 +237,7 @@ MonoBehaviour:
   bulletDamage: 10
   state: 0
   moveSpeed: 0.075
-  shoot: {fileID: 0}
+  shoot: {fileID: 82863392513856716}
 --- !u!212 &212445035228337912
 SpriteRenderer:
   m_ObjectHideFlags: 1

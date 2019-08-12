@@ -40,7 +40,7 @@ public class Pausemenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Unpause");
     }
 
-    void Pause()
+    public void Pause()
     {
         ButtonEnabled = false;
         pauseMenuUI.SetActive(true);

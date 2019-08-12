@@ -52,72 +52,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Music
-    clip: {fileID: 0}
-    mix: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
   - name: PlayerShooting
     clip: {fileID: 8300000, guid: fb3be0630141e4ced94668f6b61562f5, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.05
     pitch: 2
     loop: 0
     source: {fileID: 0}
   - name: PlayerCircle
     clip: {fileID: 8300000, guid: 9f7815e23eba94116afde806286f2f8e, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Hit
     clip: {fileID: 8300000, guid: 89eb95605d4db4a069188c5da1071178, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.4
     pitch: 0.75
     loop: 0
     source: {fileID: 0}
   - name: Killed Enemy
     clip: {fileID: 8300000, guid: bbd0f75280f424276b390a90a437e7b4, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Killed Player
     clip: {fileID: 8300000, guid: bbd0f75280f424276b390a90a437e7b4, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.6
     pitch: 1.5
     loop: 0
     source: {fileID: 0}
   - name: GameOver
     clip: {fileID: 8300000, guid: c56a2db3d6b934b11a494b416c7d4e4b, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: 9844ae3bb627c4fcd866155fb9ca52d3, type: 3}
-    mix: {fileID: 0}
-    volume: 1
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Pause
     clip: {fileID: 8300000, guid: 4f8702a0fdf56434fa345d5f255a3d2c, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Unpause
     clip: {fileID: 8300000, guid: 4b72989b72fcf42739eb00ab7c6de564, type: 3}
-    mix: {fileID: 0}
+    mix: {fileID: 24300002, guid: 1ce61a0dde1b2443cb502ca4fca71902, type: 2}
     volume: 0.75
     pitch: 1
     loop: 0
